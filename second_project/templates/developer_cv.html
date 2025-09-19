@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <h2>Username: {{ user.username }}</h2>
+        <h2>Name: {{ user.name }}</h2>
+        <h2>Skills: </h2>
+        <ul>
+            {% for item in user.skills %}
+            <li style="font-size:25px;">{{ item }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'developers_list' %}" style="font-size:20px;">BACK TO DEVELOPERS LIST</a>
+    </body>
+</html>
