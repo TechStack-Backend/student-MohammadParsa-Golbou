@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{% if form.instance.pk %}Edit{% else %}Create{% endif %} Developer{% endblock %}
+{% block content %}
+<h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Developer</h2>
+
+{% if form.non_field_errors %}
+<ul>
+  {% for error in form.non_field_errors %}
+    <li><strong>General error:</strong> {{ error }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+  <a href="{% url 'developer_list' %}">Cancel</a>
+</form>
+{% endblock %}

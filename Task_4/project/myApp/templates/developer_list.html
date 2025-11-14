@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Developers{% endblock %}
+{% block content %}
+<h2>Developers</h2>
+
+<a href="{% url 'developer_add' %}">+ Add Developer</a>
+
+<ul>
+  {% for developer in developers %}
+    <li>
+      <a href="{% url 'developer_detail' developer.pk %}">
+        {{ developer.first_name }} {{ developer.last_name }} ({{ developer.age }} years old)
+      </a>
+    </li>
+  {% empty %}
+    <li>No developers found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
