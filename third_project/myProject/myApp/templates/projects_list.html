@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <h2>Projects</h2>
+        <ul>
+            {% for item in projects %}
+                <li>
+                    <strong>{{ item.title }}:</strong> {{ item.description }}
+                    <ul>
+                        {% for dev in item.developer.all %}
+                            <li>{{ dev.first_name }} {{ dev.last_name }}</li>
+                        {% empty %}
+                            <li>No Developers Listed</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <br>
+            {% empty %}
+                <li>No Projects Listed</li>
+                <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

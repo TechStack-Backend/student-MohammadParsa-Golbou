@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <h2>Developers</h2>
+        <ul>
+            {% for item in devs %}
+                <li>
+                    <strong>{{ item.first_name }} {{ item.last_name }}</strong> ({{ item.email }}, {{ item.age }} years old)
+                    <ul>
+                        {% for skill in item.skill_set.all %}
+                            <li>{{ skill.title }}: {{ skill.description }}</li>
+                        {% empty %}
+                            <li>No Skills Listed</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <br>
+            {% empty %}
+                <li>No Developers Listed</li>
+                <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

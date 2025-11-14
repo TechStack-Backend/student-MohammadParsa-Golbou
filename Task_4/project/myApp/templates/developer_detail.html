@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Developer Detail{% endblock %}
+{% block content %}
+<h2>{{ developer.first_name }} {{ developer.last_name }}</h2>
+<p><strong>Age:</strong> {{ developer.age }}</p>
+<p><strong>Email:</strong> {{ developer.email }}</p>
+
+<a href="{% url 'developer_edit' developer.pk %}">Edit</a> |
+<a href="{% url 'developer_delete' developer.pk %}">Delete</a> |
+<a href="{% url 'developer_list' %}">Back to List</a>
+{% endblock %}

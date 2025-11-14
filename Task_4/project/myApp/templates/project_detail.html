@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Project Detail{% endblock %}
+{% block content %}
+<h2>{{ project.title }}</h2>
+<p><strong>Description:</strong> {{ project.description }}</p>
+
+<p><strong>Developers:</strong> {{ project.developer.first_name }} {{ project.developer.last_name }}</p>
+<ul>
+    {% for person in project.developer.all %}
+        <li>
+            <a href="{% url 'developer_detail' person.pk %}">
+            {{ person.first_name }} {{ person.last_name }} ({{ person.age }} years old)
+            </a>
+        </li>
+    {% empty %}
+        <li>No developers found.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'project_edit' project.pk %}">Edit</a> |
+<a href="{% url 'project_delete' project.pk %}">Delete</a> |
+<a href="{% url 'project_list' %}">Back to List</a>
+
+{% endblock %}
